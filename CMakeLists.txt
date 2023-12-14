@@ -70,6 +70,9 @@ option(WITH_TESTS "Build unit tests (requires internet connection)" ON)
 option(WITH_GUI "Build GUI items" ON)
 option(WITH_SIMULATION_MODULES "Build simulation modules" ON)
 
+# Option for generating JS/TS bindings 
+option(FOR_JS "Build for JS" OFF) 
+
 # Options for external HAL.
 option(WITH_EXTERNAL_HAL "Use a separately built HAL" OFF)
 set(EXTERNAL_HAL_FILE "" CACHE FILEPATH "Location to look for an external HAL CMake File")
@@ -404,6 +407,10 @@ if(WITH_WPILIB)
         add_subdirectory(wpilibcExamples)
     endif()
     add_subdirectory(myRobot)
+endif()
+
+if (FOR_JS)
+    add_subdirectory(wpilibjs)
 endif()
 
 if(WITH_SIMULATION_MODULES AND NOT WITH_EXTERNAL_HAL)

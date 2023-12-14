@@ -4,6 +4,7 @@
 
 #include "wpi/StackTrace.h"
 
+#ifndef __EMSCRIPTEN__
 #include <execinfo.h>
 
 #include "wpi/Demangle.h"
@@ -39,3 +40,4 @@ std::string GetStackTraceDefault(int offset) {
 }
 
 }  // namespace wpi
+#endif
