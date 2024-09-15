@@ -156,6 +156,8 @@ if(MSVC)
     target_compile_definitions(wpiutil PRIVATE -D_CRT_SECURE_NO_WARNINGS)
 endif()
 wpilib_target_warnings(wpiutil)
+find_package(Protobuf REQUIRED)
+message("\n\nProtobuf_LIBRARY: (${Protobuf_LIBRARY})\n\n")
 target_link_libraries(wpiutil protobuf::libprotobuf Threads::Threads ${CMAKE_DL_LIBS})
 
 if(ATOMIC)
